@@ -19,7 +19,7 @@ FAIL = 0
 TIMEOUT = 15
 
 TEST_COUNT = os.environ.get("TEST_COUNT") or 1000
-TEST_WEBSITE = os.environ.get("TEST_WEBSITE") or "https://zhihu.com"
+TEST_WEBSITE = os.environ.get("TEST_WEBSITE") or "https://www.baidu.com"
 TEST_PROXIES = os.environ.get("TEST_PROXIES") or "http://localhost:3289/get/20"
 
 

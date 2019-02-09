@@ -2,7 +2,7 @@
 # coding=utf-8
 
 import re
-
+import time
 import pyquery
 
 from .utils import requests
@@ -88,8 +88,9 @@ class Crawler:
         """
         url = "https://www.kuaidaili.com/free/{}"
 
-        items = ["inha/1/"]
+        items = ["inha/1/", "inha/2/", "inha/3/", "inha/4/", "inha/5/", "inha/6/"]
         for proxy_type in items:
+            time.sleep(1)
             html = requests(url.format(proxy_type))
             if html:
                 doc = pyquery.PyQuery(html)

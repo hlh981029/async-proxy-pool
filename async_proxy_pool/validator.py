@@ -2,8 +2,8 @@
 # coding=utf-8
 
 import os
+import ssl
 import asyncio
-
 import aiohttp
 
 from .config import VALIDATOR_BASE_URL, VALIDATOR_BATCH_COUNT, REQUEST_TIMEOUT
@@ -30,7 +30,7 @@ class Validator:
                 if isinstance(proxy, bytes):
                     proxy = proxy.decode("utf8")
                 async with session.get(
-                    VALIDATOR_BASE_URL, proxy=proxy, timeout=REQUEST_TIMEOUT
+                    VALIDATOR_BASE_URL, proxy=proxy, timeout=REQUEST_TIMEOUT, ssl=ssl._create_unverified_context()
                 ) as resp:
                     if resp.status == 200:
                         self.redis.increase_proxy_score(proxy)

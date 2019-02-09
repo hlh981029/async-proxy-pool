@@ -6,6 +6,7 @@ import asyncio
 import aiohttp
 
 from .config import HEADERS, REQUEST_TIMEOUT, REQUEST_DELAY
+import ssl
 
 
 LOOP = asyncio.get_event_loop()
@@ -19,7 +20,7 @@ async def _get_page(url, sleep):
         try:
             await asyncio.sleep(sleep)
             async with session.get(
-                url, headers=HEADERS, timeout=REQUEST_TIMEOUT
+                url, headers=HEADERS, timeout=REQUEST_TIMEOUT, ssl=ssl._create_unverified_context()
             ) as resp:
                 return await resp.text()
         except:
